@@ -7,7 +7,7 @@
     <h1 class="AppTitle">Movie 앱🎥</h1>
   </div>
   <div v-if="movies">
-    <div class="movieContainer" v-for="movie in movies" :key="movie.id">
+    <div v-for="movie in movies" :key="movie.id" class="movieContainer">
       <a class="movieTitle" :href="movie.url">
         {{ movie.title }} ({{ movie.year }}) 👍🏻
       </a>
@@ -51,7 +51,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, reactive } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const movies = ref()
 
@@ -64,16 +64,6 @@ const getRatingClass = (rating) => {
     return 'bad'
   }
 }
-
-// onMounted(() => {
-// 	console.log('Mounted!!');
-// 	fetch('https://yts.mx/api/v2/list_movies.json?sort_by=rating')
-// 		// 약속 받은 json 값
-// 		// .then((res) => console.log(res.json()))
-// 		.then((res) => res.json())
-// 		.then((json => movies.value = json));
-// 		console.log('movies: ', movies);
-// })
 
 onMounted(async () => {
   console.log('Mounted!!')
