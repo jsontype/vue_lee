@@ -1,0 +1,65 @@
+import React, { useState, useEffect } from 'react'
+import Loading from './Loading'
+// CSS
+import './Movies.css'
+
+// https://yts.mx/api/v2/list_movies.json?sort_by=rating
+export default function Movies() {
+	const [movies, setMovies] = useState([])
+	// 리액트는 무조건 변수를 useState로 만든다!!!
+	
+
+	useEffect(() => {
+		
+		fetch('https://yts.mx/api/v2/list_movies.json?sort_by=rating')
+		// fetch('https://yts.mx/api/v2/list_movies.json')
+			// .then(res => console.log(res.json()))
+			// 비동기로 약속을 함. res.json값이 들어갈거다
+			.then(res => res.json())
+			.then(json => { setMovies(json.data.movies); })
+			
+
+	}, [])
+
+
+
+	// return값으로써 html렌더링
+	const render = () => { 
+		console.log('movie: ', movies)
+		return movies.map(item => {
+			return (
+				<div key={item.id} className="movieContainer">
+						<a class="movieTitle" href={item.url}> {item.title} ({item.year}) {item.rating >= 9 && '🔥'}</a>
+						<div className="movieDetail">
+							<img className="movieImage" src={item.large_cover_image} alt={item.title}/>
+							<div className="movieDescription">
+								<div className={item.rating >= 9 ? 'good' : item.rating >= 7 ? 'notBad' : 'bad'}>평점: {item.rating ? item.rating + ' / 10점' : '정보없음'}</div>
+								<div>장르: {item.genres.join(', ')}</div>
+								<div>상영시간: {item.runtime ? item.runtime + '분' : '정보없음'}</div>
+								{/* 요약이 긴 영화에 긴요약을 tooltip으로 만들수있는지 찾아보기 */}
+								<div>요약: {item.summary || '정보없음'}</div>
+								{/* torrent.url이 한개 이상일 때 map으로 만들어서  */}
+								<div>토렌트: {item.torrents.map((tor, idx) => { return (
+									<span>
+										<a href={tor.url}>#{idx + 1}</a>{' '}
+										{/* <div>토렌트 주소 : {item.torrent.url}</div>
+										<div>토렌트 퀄리티 : {item.torrent.quality}</div>
+										<div>토렌트 사이즈 : {item.torrent.size}</div> */}
+									</span>
+								)})}
+								</div>
+							</div>
+						</div>
+					</div>
+				)
+			})
+		}
+
+	return (
+		<>
+		{/* 검색엔진 최적화를 h1태그에서 한다 SEO(Search Engine Optimization)에 대해서 찾기 */}
+			<h1>Movie App</h1>
+			
+		</>
+	)
+}
