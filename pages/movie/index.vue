@@ -4,7 +4,7 @@
       <Top />
     </div>
 
-    <h1 class="AppTitle">Movie 앱🎥</h1>
+    <h1 class="AppTitle">Movie 앱 🎥</h1>
   </div>
   <div v-if="movies">
     <div v-for="movie in movies" :key="movie.id" class="movieContainer">

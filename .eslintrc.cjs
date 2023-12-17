@@ -28,7 +28,6 @@ module.exports = {
     'eol-last': 0,
     'vue/no-v-html': 0,
     'vue/multi-word-component-names': 0,
-    'vue/no-multiple-template-root': 0,
-    'vue/no-multiple-template-root': 0,
+    'vue/no-multiple-template-root': 0
   }
-};
+}
