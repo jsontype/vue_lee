@@ -7,11 +7,16 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "format": "prettier --check \"**/*.{js,vue}\"",
+    "format:fix": "prettier --write \"**/*.{js,vue}\""
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "nuxt": "^3.8.2",
+    "prettier": "^3.1.1",
     "sass": "^1.69.5",
     "vue": "^3.3.10",
     "vue-router": "^4.2.5"
