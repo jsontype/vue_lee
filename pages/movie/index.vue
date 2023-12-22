@@ -1,5 +1,5 @@
 <template>
-  <div class="AppStyle">
+  <div class="AppCenter">
     <div class="top">
       <Top />
     </div>
