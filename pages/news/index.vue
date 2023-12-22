@@ -1,5 +1,5 @@
 <template>
-	<div class="AppLeft">
+	<div class="AppCenter">
 		<div class="top">
 			<Top />
 			<h1 class="AppTitle">News App📣</h1>
