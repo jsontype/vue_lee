@@ -10,19 +10,18 @@
 	&:hover {
 		background: lighten($color, 10%);
 	}
-
 	&:active {
 		background: darken($color, 10%);;
 	}
 }
+
 .addButton-Style {
 	@include button-color($blue);
 }
+
 .delButton-Style {
 	@include button-color($red);
-
 }
-
 
 @mixin a-color($color) {
   background: $color;
